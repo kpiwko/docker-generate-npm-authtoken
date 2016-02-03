@@ -8,11 +8,14 @@ For some reason, the `npm login` command is interactive, and this causes problem
 
 ## Usage
 
+Note tha NPM_REPOSITORY variable is optional.
+
     docker run \
         -e NPM_USER=$NPM_USER \
         -e NPM_PASS=$NPM_PASS \
         -e NPM_EMAIL=$NPM_EMAIL \
-        bravissimolabs/generate-npm-authtoken
+        -e NPM_REPOSITORY=$NPM_REPOSITORY \
+        kpiwko/generate-npm-authtoken
 
 If you want to save output to `~/.npmrc` where it doesn't exist, you can simply redirect the output.
 
@@ -20,7 +23,8 @@ If you want to save output to `~/.npmrc` where it doesn't exist, you can simply 
         -e NPM_USER=$NPM_USER \
         -e NPM_PASS=$NPM_PASS \
         -e NPM_EMAIL=$NPM_EMAIL \
-        bravissimolabs/generate-npm-authtoken \
+        -e NPM_REPOSITORY=$NPM_REPOSITORY \
+        kpiwko/generate-npm-authtoken \
         > ~/.npmrc
 
 Bear in mind that this will overwrite an existing `.npmrc`, so if you don't want to do that, append it instead with `>>`. Note: when there are multiple auth tokens in `.npmrc`, npm uses the last occurrence.
@@ -29,5 +33,6 @@ Bear in mind that this will overwrite an existing `.npmrc`, so if you don't want
         -e NPM_USER=$NPM_USER \
         -e NPM_PASS=$NPM_PASS \
         -e NPM_EMAIL=$NPM_EMAIL \
-        bravissimolabs/generate-npm-authtoken \
+        -e NPM_REPOSITORY=$NPM_REPOSITORY \
+        kpiwko/generate-npm-authtoken \
         >> ~/.npmrc
